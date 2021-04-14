@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    height: 70px;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav > a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav > a:hover {
+    color: red;
+}
+
+div > a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+btn btn-primary {
+    color: red;
+}
+
+.warning {
+    display: block;
+    color: red;
+}

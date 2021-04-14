@@ -1,0 +1,39 @@
+<h4>Name: {{pet.name}}</h4>
+<img src="{{pet.image}}" alt="{{pet.name}} photo">
+<p>Species: {{petSpeciesText}}</p>
+<p>Owner: {{pet.owner.name}}</p>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPet">
+  Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editPet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit my pet!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/pets/edit/{{pet._id}}" method="post">
+        <div class="modal-body">
+            <input type="text" name="petName" placeholder="Name of the pet" value={{pet.name}}><br><br>
+            <input type="text" name="petImage" placeholder="Pet photo link" value={{pet.image}}><br><br>
+            <select name="petSpecies">
+                {{#each sepeciesValues}}
+                <option value="{{this.value}}">{{this.text}}</option>
+                {{/each}}
+            </select><br><br>
+            <input type="date" name="petBirthDate" placeholder="Your pet's date of birth" value={{pet.birthDate}}><br><br>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
