@@ -2,22 +2,24 @@
 
 <form action="/signup" method="post">
     <input type="text" name="userName" placeholder="Digite seu nome"><br>
-    {{#if userNameError}}
-        <span class="warning">{{userNameError}}</span>
+    {{#if userNameErrors}}
+        <span class="warning">{{userNameErrors.[0]}}</span>
     {{/if}}
-    <input type="email" name="userEmail" placeholder="Digite seu email"><br>
-    {{#if userEmailError}}
-        <span class="warning">{{userEmailError}}</span>
+    <input type="text" name="userEmail" placeholder="Digite seu email"><br>
+    {{#if userEmailErrors}}
+        <span class="warning">{{userEmailErrors.[0]}}</span>
     {{/if}}
     <input type="password" name="userPassword" placeholder="Crie uma senha"><br>
-    {{#if userPasswordError}}
-        <span class="warning">{{userPasswordError}}</span>
+    {{#if userPasswordErrors}}
+        <span class="warning">{{userPasswordErrors.[0]}}</span>
     {{/if}}
     <label for="userBirthDate">Informe a data de nascimento</label><br>
     <input type="date" name="userBirthDate" placeholder="Informe a data de nascimento"><br>
-    {{#if userBirthDateError}}
-        <span class="warning">{{userBirthDateError}}</span>
+    {{#if userBirthDateErrors}}
+        <span class="warning">{{userBirthDateErrors.[0]}}</span>
     {{/if}}
 
     <button type="submit">Efetuar cadastrar</button>
 </form>
+
+

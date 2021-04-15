@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 
+const { validateSignup } = require('../authentication/authentication')
+
 const router = express();
 
 router.get('/signup', (req, res) => {
@@ -10,24 +12,12 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
-    const { userName, userEmail, userPassword, userBirthDate } = req.body
+    const { userName, userEmail, userPassword, userBirthDate } = req.body;
 
-    const validationErrors = {};
+    const validationErrors = validateSignup(userName, userEmail, userPassword, userBirthDate);
 
-    if (userName.trim().length === 0) {
-        validationErrors.userNameError = 'Campo obrigatório!'
-    }
-    if (userEmail.trim().length === 0) {
-        validationErrors.userEmailError = 'Campo obrigatório!'
-    }
-    if (userPassword.trim().length === 0) {
-        validationErrors.userPasswordError = 'Campo obrigatório!'
-    }
-    if (userBirthDate.trim().length === 0) {
-        validationErrors.userBirthDateError = 'Campo obrigatório!'
-    }
 
     if (Object.keys(validationErrors).length > 0) {
         return res.render('signup', validationErrors );
